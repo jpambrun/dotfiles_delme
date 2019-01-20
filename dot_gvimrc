@@ -1,0 +1,7 @@
+set go-=T
+set go-=m
+set go-=r
+set guioptions+=c
+set mouse=c
+set guifont=Hack\ 12
+

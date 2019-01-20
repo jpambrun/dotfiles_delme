@@ -1,0 +1,7 @@
+export auto_proxy=http://bibliotheque.etsmtl.ca/proxy.pac
+export GOPATH=$HOME/go
+export PATH=$PATH:~/go/bin
+export JAVA_HOME=/usr/lib/jvm/default/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/openmpi
+export PATH=$PATH:~/bin:/opt/cuda/bin
+export BROWSER=google-chrome-stable

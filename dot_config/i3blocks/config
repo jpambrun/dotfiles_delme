@@ -1,0 +1,121 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+separator_block_width=15
+
+[battery]
+label=batt
+command=~/bin/battery
+separator=false
+interval=30
+min_width=cpu 100.00%
+color=#909AA6
+
+[updates]
+label=pkg
+separator=false
+color=#909AA6
+interval=360
+command=checkupdates | wc -l
+
+[volume]
+label=vol
+#label=♪
+instance=Master
+#instance=PCM
+command=/usr/lib/i3blocks/volume
+separator=false
+interval=once
+signal=10
+color=#909AA6
+
+[memory]
+label=mem
+command=/usr/lib/i3blocks/memory
+separator=false
+interval=10
+color=#909AA6
+
+[disk]
+label=/
+#instance=/mnt/data
+command=/usr/lib/i3blocks/disk
+separator=false
+interval=360
+color=#909AA6
+
+#[ethernet]
+#label=E
+#instance=eth0
+#instance=eno1
+#command=/usr/lib/i3blocks/network
+#color=#00FF00
+#interval=10
+
+[download]
+label=dl
+command=~/bin/bandwidth.sh rx
+separator=false
+min_width=dl 00 kB/s
+align=right
+#color=#44FF44
+interval=1 # IMPORTANT
+color=#909AA6
+
+[upload]
+label=ul
+command=~/bin/bandwidth.sh tx
+separator=false
+min_width=ul 00 kB/s
+align=right
+#color=#FF0000
+interval=1 # IMPORTANT
+color=#909AA6
+
+[cpu]
+label=cpu
+command=/usr/lib/i3blocks/cpu_usage -w 12 -c 25
+separator=false
+interval=1
+min_width=cpu 100.00%
+color=#909AA6
+#separator=false
+
+#[load]
+#command=/usr/lib/i3blocks/load_average
+#interval=10
+
+[time]
+label=
+command=date '+%Y-%m-%d %H:%M'
+separator=false
+interval=5
+color=#909AA6
+
+[keyboard]
+label=
+separator=false
+command=~/bin/keyboard.sh
+interval=5
+signal=1
+color=#909AA6

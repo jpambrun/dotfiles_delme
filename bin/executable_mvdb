@@ -1,0 +1,9 @@
+#! /bin/sh
+URL=http://random.jfpb.net/
+
+FILENAME="$(date | md5sum | head -c 16)_$(basename $1)"
+mv $1 /tmp/$FILENAME
+scp "/tmp/$FILENAME" jfpb.net:www_random
+echo -n "$URL/$FILENAME" | xclip -sel clipboard
+echo "$URL/$FILENAME"
+exit 0

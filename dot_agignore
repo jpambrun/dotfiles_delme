@@ -1,0 +1,9 @@
+node_modules/*
+jspm_packages/*
+tags
+bower_components/*
+.git/*
+
+*.min.js
+*.map
+.dropbox

@@ -1,0 +1,168 @@
+set nocompatible              " be iMproved, required
+if &shell =~# 'bin/fish$'
+      set shell=/bin/sh
+endif
+
+set term=xterm-256color
+if has("termtruecolor")
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8b=[48;2;%lu;%lu;%lum
+    set termguicolors
+endif
+
+filetype off                  " requiredset nocompatible
+set exrc
+set secure
+set laststatus=2
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set spell
+set hidden " so I don't have to save buffer before switching
+set incsearch " Preview as you type "
+set ignorecase
+set hlsearch
+set smartcase " If you type a capital letter, be case sensitive "
+set timeoutlen=1000 ttimeoutlen=0
+" set the runtime path to include Vundle and initialize
+""" Vundle plugin manager {{{
+    """ Automatically setting up Vundle, taken from
+    """ http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/ {{{
+        let has_vundle=1
+        if !filereadable($HOME."/.vim/bundle/Vundle.vim/README.md")
+            echo "Installing Vundle..."
+            echo ""
+            silent !mkdir -p $HOME/.vim/bundle
+            silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
+            let has_vundle=0
+        endif
+    """ }}}
+    """ Initialize Vundle {{{
+        filetype off                                " required to init
+        set rtp+=$HOME/.vim/bundle/Vundle.vim       " include vundle
+        call vundle#begin()                         " init vundle
+    """ }}}
+
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/vundle'
+Plugin 'morhetz/gruvbox'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'junegunn/vim-easy-align'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+ """ Installing plugins the first time, quits when done {{{
+        if has_vundle == 0
+            :silent! PluginInstall
+            :qa
+        endif
+    """ }}}
+
+filetype plugin indent on     " required
+
+
+set number
+set background=dark
+
+let g:gruvbox_italic=1
+colorscheme gruvbox
+
+syntax on
+let mapleader=" "
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
+nnoremap <Leader>e :e
+nnoremap <Leader>v :vsplit<CR>
+nnoremap <Leader>s :split<CR>
+nnoremap <Leader>p "+p
+vnoremap <Leader>p "+p
+nnoremap <Leader>y "+y
+vnoremap <Leader>y "+y
+nnoremap <Leader>rs :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" Ener clear seach
+nnoremap <CR> :noh<CR><CR>
+
+"nnoremap j gj
+"nnoremap k gk
+
+
+nnoremap <S-tab> :bprevious<CR>
+nnoremap <tab>   :bnext<CR>
+set wildchar=<Tab> wildmenu wildmode=full
+set wildcharm=<C-Z>
+nnoremap <Leader>b :b <C-Z>
+
+set completeopt-=preview
+" C-@ is C-space
+
+" Spelling
+highlight clear SpellBad
+highlight SpellBad term=underline cterm=underline
+
+" String to put at the start of lines that have been wrapped "
+let &showbreak='↪ '
+set breakindent
+"
+" " Minimal number of screen lines to keep above and below the cursor "
+set scrolloff=3
+"
+" " If 't_vb' is cleared and 'visualbell' is set, "
+" " no beep and no flash will ever occur "
+set visualbell
+set t_vb=
+
+" fix backgroud redraw on console
+set t_ut=
+
+" preserve words instead by only breaking at certain characters
+set linebreak
+
+" make it replace all occurrences on the appropriate without adding g.
+set gdefault
+
+" use dropbox
+set nobackup
+set noswapfile
+
+nnoremap <F1> <nop>
+nnoremap Q <nop>
+nnoremap K <nop>
+nnoremap Y y$
+
+" ===  neocomplete
+" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+let g:neocomplete#max_list = 8
+let g:neocomplete#max_keyword_width = 30
+" let g:neocomplete#auto_completion_start_length = 10
+let g:neocomplete#disable_auto_complete = 1
+
+
+"inoremap <expr><C-n> neocomplete#start_manual_complete()
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+imap <tab>     <Plug>(neosnippet_expand_or_jump)
+smap <tab>     <Plug>(neosnippet_expand_or_jump)
+xmap <tab>     <Plug>(neosnippet_expand_target)
+
+set langmap=é/
+
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)

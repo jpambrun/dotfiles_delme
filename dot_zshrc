@@ -1,0 +1,104 @@
+#bindkey '^r' history-incremental-search-backward
+#bindkey '^R' history-incremental-pattern-search-backward
+
+
+#bindkey "^p" history-search-backward
+#bindkey "^n" history-search-forward
+alias ta='tmux attach -t'
+alias pass='lpass show -G'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+alias tmux='tmux -2'
+alias subl='subl3 -n'
+alias find='noglob find'
+alias mlab='matlab -nodesktop -nosplash -softwareopengl'
+alias o='xdg-open'
+alias ssh='TERM=xterm-256color ssh'
+alias k='k -h'
+alias venv='source ~/venv/research/bin/activate'
+alias rm='nocorrect rm'
+alias cd='cd -P'
+alias ls='exa -lah --git'
+alias ag='ag --path-to-ignore ~/.agignore'
+
+function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
+function findit {
+    START_PATH='.'
+    FILES="$*"
+
+    # If we have a phrase src/../nav.handlebars, then we want to look
+    # in the 'src' directory for the filename given:
+    if echo "$1" | grep '\.\.' >/dev/null
+    then
+        set $(echo "$1" | sed 's/\/*\.\.\/*/  /');
+    fi
+
+    # If the first option is a directory, then look in that path, otherwise,
+    # start searching from the current directory.
+    if [ -d "$1" -a -n "$2" ]
+    then
+        START_PATH=$1
+        shift
+        FILES="$*"
+    fi
+
+    # Ignore the classes and .git directories, as well as look for every
+    # file name given.
+    find $START_PATH \
+        -not \( -path '*classes*' -or -path '*node_modules*' -or -path '.git*' \) \
+        -and -iname $(perl -e 'print join " -o -iname ", @ARGV' $FILES) 2>/dev/null
+}
+alias f='noglob findit'
+
+#stty -ixon
+
+# temporary workaround
+#alias grep="/usr/bin/grep $GREP_OPTIONS"
+#unset GREP_OPTIONS
+
+# glog dotfile (.)
+setopt dotglob
+
+source /usr/share/zsh/scripts/zplug/init.zsh
+
+# Make sure you use double quotes
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+
+zplug "b4b4r07/enhancd", use:init.sh
+
+zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, use:"*linux*amd64*"
+zplug "plugins/git",   from:oh-my-zsh
+zplug "yous/lime"
+zplug "raylee/tldr", from:github, as:command, use:"tldr"
+zplug "zsh-users/zsh-syntax-highlighting", defer:3 #
+
+# Install plugins if there are plugins that have not been installed
+#if ! zplug check --verbose; then
+    #printf "Install? [y/N]: "
+    #if read -q; then
+        #echo; zplug install
+    #else
+        #echo
+    #fi
+#fi
+#zplug check || zplug install
+zplug load
+
+bindkey -e
+
+# disable ^D quit shell
+setopt IGNORE_EOF
+bindkey -r '^D'
+
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+export CPPFLAGS='-Wno-shift-negative-value'
+setopt NO_NOMATCH
+
+ulimit -n 65536
