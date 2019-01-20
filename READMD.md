@@ -1,10 +1,17 @@
-Edit `./config/chezmoi/chezmoi.yaml`:
+Edit `.`:
 
 
 yay -S bitwarden-cli
+
+
+```
+mkdir -p ~/.config/chezmoi/
+vim ~/config/chezmoi/chezmoi.yaml
+```
+
+
 ``` yaml
-[data]
-    name = "<your-name>"
-    email = "<your-email>"
+data:
+  email: jf.pambrun@gmail.com
 
 ```
