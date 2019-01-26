@@ -92,13 +92,50 @@ for P in $AUR_PKG; do
     ../go/bin/yay -S --noconfirm "${P}"
 done
 
-# Stow
-for D in *; do
-    if [ -d "${D}" ]; then
-        echo "Stowing ${D}"
-        stow "${D}"
-    fi
+
+{{- if .is_ideapad }}
+echo "blacklist ideapad_laptop" | sudo tee /etc/modprobe.d/noideapad.conf
+{{- end }}
+
+{{- if .is_ideapad }}
+# Install everything
+# DEFAULT_PKG="\
+#              nvidia \
+#              nvidia-settings \
+#              nvidia-libgl \
+#              "
+
+# for P in $DEFAULT_PKG; do
+#     echo "Installing ${P}"
+#     sudo pacman -S --noconfirm "${P}"
+# done
+
+sudo mhwd -i pci video-nvidia
+{{- end }}
+
+{{- if .is_desktop }}
+echo governor='performance' | sudo tee -a /etc/default/cpupower
+sudo systemctl enable cpupower
+{{- end }}
+
+
+{{- if .is_laptop }}
+DEFAULT_PKG="\
+            nm-applet \
+            networkmanager
+            "
+
+for P in $DEFAULT_PKG; do
+    echo "Installing ${P}"
+    sudo pacman -S --noconfirm "${P}"
 done
+
+sudo systemctl start NetworkManager
+sudo systemctl enable NetworkManager
+{{- end }}
+
+
+
 
 # service
 sudo systemctl start sshd.service
@@ -106,10 +143,15 @@ sudo systemctl enable sshd.service
 sudo systemctl enable dhcpcd.service
 
 # user jpambrun specific
-sudo chsh -s /usr/bin/fish jpambrun
-source ~/.profile
-fish -c 'fisher'
+#sudo chsh -s /usr/bin/fish jpambrun
+#source ~/.profile
+#fish -c 'fisher'
 
 code --install-extension Shan.code-settings-sync
+
+echo '* hard nofile 65536' | sudo tee -a /etc/security/limits.conf
+echo '* soft nofile 65536' | sudo tee -a /etc/security/limits.conf
+sudo sysctl --system
+
 
 mkdir ~/.npm-global

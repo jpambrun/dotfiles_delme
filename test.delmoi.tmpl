@@ -1,0 +1,9 @@
+{{ .email }}
+{{ .is_server }}
+{{- if .is_server }}
+server
+{{- end }}
+
+{{- if .install.nvidia_driver }}
+install nvdvri
+{{- end }}
