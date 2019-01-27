@@ -1,2 +1,12 @@
 README.md
 setup.sh
+
+
+{{- if .is_server }}
+dot_i3/
+dot_bg/
+dot_fonts/
+dot_i3/
+dot_xinitrc
+dot_Xressources
+{{- end }}
