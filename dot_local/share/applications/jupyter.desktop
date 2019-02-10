@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Encoding=UTF-8
-Name=Jupyter
-Comment=Jupyter
-Exec=chromium --app=https://j.gc.jfpb.net
-Icon=application.png
-Terminal=false

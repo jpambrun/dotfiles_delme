@@ -15,3 +15,8 @@ data:
   email: jf.pambrun@gmail.com
 
 ```
+
+
+```
+go get -u github.com/twpayne/chezmoi
+```

@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Encoding=UTF-8
-Name=Theia
-Comment=IDE on the web
-Exec=chromium --app=https://i.gc.jfpb.net
-Icon=application.png
-Terminal=false
