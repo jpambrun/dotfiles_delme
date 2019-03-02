@@ -1,9 +1,8 @@
 #! /bin/sh
 mkdir -p ~/.config/chezmoi
 
-go get -u github.com/twpayne/chezmoi
+#go get -u github.com/twpayne/chezmoi
 
-rm ~/.config/chezmoi/chezmoi.yaml
 cat <<EOT >> ~/.config/chezmoi/chezmoi.yaml
 sourceDir: .chezmoi
 data:

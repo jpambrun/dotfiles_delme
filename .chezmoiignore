@@ -3,10 +3,27 @@ setup.sh
 
 
 {{- if .is_server }}
-dot_i3/
-dot_bg/
-dot_fonts/
-dot_i3/
-dot_xinitrc
-dot_Xressources
+.i3/
+.bg/
+.fonts/
+.i3/
+.xinitrc
+.Xressources
 {{- end }}
+
+{{ if eq .chezmoi.os "darwin" -}}
+.bg/
+.fonts/
+.i3/
+.xinitr
+.Xressources
+.bg
+bin
+.fonts
+.install
+.profile
+.xinitrc
+.Xresources
+.zprofile
+.zshrc
+{{end -}}
