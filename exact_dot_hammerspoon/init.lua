@@ -77,77 +77,21 @@ end
 
 local bindings = {
   [{'alt', 'ctrl'}] = {
-    [1] = moveFrontmostWindow(grid.rightTopHalf),
-    [2] = moveFrontmostWindow(grid.rightBottomHalf),
-
-    [3] = moveFrontmostWindow(grid.rightTopThird),
-    [4] = moveFrontmostWindow(grid.rightMiddleThird),
-    [5] = moveFrontmostWindow(grid.rightBottomThird),
-
-    [6] = moveFrontmostWindow(grid.rightFirstQuarter),
-    [7] = moveFrontmostWindow(grid.rightSecondQuarter),
-    [8] = moveFrontmostWindow(grid.rightThirdQuarter),
-    [9] = moveFrontmostWindow(grid.rightFourthQuarter),
-
-    q = moveFrontmostWindow(grid.leftThirdTopHalf),
-    w = moveFrontmostWindow(grid.leftTwoThirdsTopHalf),
-    e = moveFrontmostWindow(grid.middleThirdTopHalf),
-    r = moveFrontmostWindow(grid.rightTwoThirdsTopHalf),
-    t = moveFrontmostWindow(grid.rightThirdTopHalf),
-
-    a = moveFrontmostWindow(grid.leftThird),
-    s = moveFrontmostWindow(grid.leftTwoThirds),
-    d = moveFrontmostWindow(grid.middleThird),
-    f = moveFrontmostWindow(grid.rightTwoThirds),
-    g = moveFrontmostWindow(grid.rightThird),
-
-    z = moveFrontmostWindow(grid.leftThirdBottomHalf),
-    x = moveFrontmostWindow(grid.leftTwoThirdsBottomHalf),
-    c = moveFrontmostWindow(grid.middleThirdBottomHalf),
-    v = moveFrontmostWindow(grid.rightTwoThirdsBottomHalf),
-    b = moveFrontmostWindow(grid.rightThirdBottomHalf),
-
-    y = moveFrontmostWindow(grid.leftQuarter),
-    u = moveFrontmostWindow(grid.middleHalf),
-    i = moveFrontmostWindow(grid.rightQuarter),
-
-    h = moveFrontmostWindow(grid.leftHalf),
-    j = moveFrontmostWindow(grid.bottomHalf),
-    k = moveFrontmostWindow(grid.topHalf),
-    l = moveFrontmostWindow(grid.rightHalf),
-
-    ['space'] = moveFrontmostWindow(grid.tenTwelfes),
-    ['return'] = moveFrontmostWindow(grid.fullScreen),
   },
 
   [{'alt', 'cmd', 'ctrl'}] = {
-    [1] = moveFrontmostWindow(grid.leftTopHalf),
-    [2] = moveFrontmostWindow(grid.leftBottomHalf),
-
-    [3] = moveFrontmostWindow(grid.leftTopThird),
-    [4] = moveFrontmostWindow(grid.leftMiddleThird),
-    [5] = moveFrontmostWindow(grid.leftBottomThird),
-
-    [7] = moveFrontmostWindow(grid.leftSecondQuarter),
-    [8] = moveFrontmostWindow(grid.leftThirdQuarter),
-    [9] = moveFrontmostWindow(grid.leftFourthQuarter),
   },
 
   [{'alt', 'cmd', 'ctrl', 'shift'}] = {
-    c = launchOrFocus('Google Chrome'),
-    d = launchOrFocus('Dash'),
-    e = launchOrFocus('MacVim'),
-    f = launchOrFocus('Finder'),
-    i = launchOrFocus('Visual Studio Code'),
-    k = launchOrFocus('keePassX'),
-    p = launchOrFocus('Preview'),
-    s = launchOrFocus('Spotify'),
-    t = launchOrFocus('iTerm'),
-    v = launchOrFocus('VLC'),
-    w = launchOrFocus('WhatsApp'),
-    x = launchOrFocus('Xee³'),
-    y = launchOrFocus('System Preferences'),
-    z = launchOrFocus('zoom.us'),
+    [1] = launchOrFocus('Google Chrome'),
+    [2] = launchOrFocus('Visual Studio Code'),
+    [0] = launchOrFocus('Slack'),
+    ['return'] = launchOrFocus('Alacritty'),
+    h = moveFrontmostWindow(grid.leftHalf),
+    j = moveFrontmostWindow(grid.rightTopHalf),
+    k = moveFrontmostWindow(grid.rightBottomHalf),
+    l = moveFrontmostWindow(grid.rightHalf),
+    f = moveFrontmostWindow(grid.fullScreen),
   },
 }
 
