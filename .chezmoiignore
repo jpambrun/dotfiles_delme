@@ -1,7 +1,6 @@
 README.md
 setup.sh
 
-
 {{- if .is_server }}
 .i3/
 .bg/
@@ -17,7 +16,6 @@ setup.sh
 .i3/
 .xinitr
 .Xressources
-.bg
 bin
 .fonts
 .install

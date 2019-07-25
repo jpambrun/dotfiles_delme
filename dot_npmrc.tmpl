@@ -1,0 +1,7 @@
+prefix=~/.npm-global
+package-lock=false
+
+{{ if eq .chezmoi.os "darwin" -}}
+prefix=/Users/jpambrun/.npm-global
+strict-ssl=false
+{{end -}}
