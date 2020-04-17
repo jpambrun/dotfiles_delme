@@ -16,10 +16,8 @@ setup.sh
 .i3/
 .xinitr
 .Xressources
-bin
 .fonts
 .install
-.profile
 .xinitrc
 .Xresources
 .zprofile
