@@ -1,0 +1,2 @@
+#! /bin/sh
+icdiff --recursive --highlight $1 $2|sed -e '1,1d'
