@@ -1,5 +1,6 @@
+{{ if eq .chezmoi.os "linux" -}}
 prefix=~/.npm-global
-package-lock=false
+{{end -}}
 
 {{ if eq .chezmoi.os "darwin" -}}
 prefix=/Users/jpambrun/.npm-global

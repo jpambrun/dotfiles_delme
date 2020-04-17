@@ -75,6 +75,16 @@ function launchOrFocus(app)
   end
 end
 
+function resizeFrontmostWindow(w, h)
+  return function()
+    local window = hs.window.focusedWindow()
+    local frame = window:frame()
+    frame.w = w
+    frame.h = h
+    window:setFrame(frame)
+  end
+end
+
 local bindings = {
   [{'alt', 'ctrl'}] = {
   },
@@ -86,12 +96,13 @@ local bindings = {
     [1] = launchOrFocus('Google Chrome'),
     [2] = launchOrFocus('Visual Studio Code'),
     [0] = launchOrFocus('Slack'),
-    ['return'] = launchOrFocus('Alacritty'),
+    ['return'] = launchOrFocus('Kitty'),
     h = moveFrontmostWindow(grid.leftHalf),
     j = moveFrontmostWindow(grid.rightTopHalf),
     k = moveFrontmostWindow(grid.rightBottomHalf),
     l = moveFrontmostWindow(grid.rightHalf),
     f = moveFrontmostWindow(grid.fullScreen),
+    r = resizeFrontmostWindow(1680, 1050)
   },
 }
 
