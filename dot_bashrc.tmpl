@@ -205,7 +205,7 @@ source <(kubectl completion bash | sed 's/kubectl/k/g')
 {{ if eq .chezmoi.os "darwin" -}}
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-export HTTP_PROXY=http://127.0.0.1:9000
-export HTTPS_PROXY=http://127.0.0.1:9000
-export NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.99.1/24
+# export HTTP_PROXY=http://127.0.0.1:9000
+# export HTTPS_PROXY=http://127.0.0.1:9000
+# export NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.99.1/24
 {{end -}}
