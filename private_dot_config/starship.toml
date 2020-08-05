@@ -1,0 +1,15 @@
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+[git_commit]
+commit_hash_length = 8
+
+[git_state]
+progress_divider = " of "
+cherry_pick = "🍒 PICKING"
+
+[directory]
+truncation_length = 5
+truncate_to_repo = true

@@ -4,15 +4,20 @@
 
 [core]
   editor = vim
-  pager = delta --light
+  pager = delta --light --line-numbers
+
 [interactive]
   diffFilter = delta --color-only
+
+[delta]
+  theme = 'GitHub'
 
 [credential]
   helper = store
 
 [merge]
   tool = meld
+  conflictstyle = diff3
 
 [color]
   status = auto
