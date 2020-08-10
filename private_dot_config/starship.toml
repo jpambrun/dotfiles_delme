@@ -13,3 +13,12 @@ cherry_pick = "🍒 PICKING"
 [directory]
 truncation_length = 5
 truncate_to_repo = true
+
+[kubernetes]
+symbol = "☸ "
+style = "bold blue"
+disabled = false
+[kubernetes.context_aliases]
+"gke_vision-poc-285617_us-west1-a_vision-k8s-west" = "vision-west"
+"gke_vision-poc-285617_us-east4-a_vision-k8s-east" = "vision-east"
+"gke_iwcs-ai-dev_us-central1-b_tool-cluster-dev-central" = "ai"
