@@ -7,7 +7,5 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/openmpi
 export PATH=$PATH:~/bin:/opt/cuda/bin
 export BROWSER=google-chrome-stable
 {{end -}}
-{{ if eq .chezmoi.os "darwin" -}}
 export PATH=$PATH:~/bin
-{{end -}}
 export KUBECTL_EXTERNAL_DIFF=icdiffr
